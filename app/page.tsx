@@ -1,11 +1,11 @@
 import Hero from "@/sections/Hero";
-import Sponsors from "@/sections/Sponsors";
+import SocialProof from "@/sections/SocialProof";
 
 export default function Home(){
   return (
     <>
       <Hero />
-      <Sponsors />
+      <SocialProof />
     </>
   )
 }
