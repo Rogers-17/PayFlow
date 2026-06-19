@@ -2,7 +2,7 @@ import { SVGProps } from "react";
 
 export default function Menu (props: SVGProps<SVGSVGElement>){
     return (
-        <div className="h-10 flex items-center justify-center md:hidden">
+        <div className="h-10 flex items-center justify-center lg:hidden">
         <svg width="24" 
         height="24" 
         viewBox="0 0 24 24" 
