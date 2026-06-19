@@ -29,8 +29,8 @@ const menuItems: MenuItems[] = [
         { menu: "Featured", href: '/'},
         ]
     },
-    { menu: "Blog", href: "/", hasDropdown: false,},
-    { menu: "Support", href: "/", hasDropdown: false,}
+    { menu: "Blog", href: "/blog", hasDropdown: false,},
+    { menu: "Support", href: "/support", hasDropdown: false,}
 ]
 
 export default function Navbar () {
