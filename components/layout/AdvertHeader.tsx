@@ -5,7 +5,8 @@ export default function AdvertHeader() {
     return (
         <div className="flex justify-center items-center py-3 gap-2 bg-secondary text-sm">
             <p>Join the PayFlow community with private beta in Sinkor</p>
-            <Image src={ArrowRight} alt='Arrow right' className='inline-flex justify-center items-center'/>
+            <Image src={ArrowRight} alt='Arrow right' 
+            className='flex flex-col md:flex-row justify-center items-center'/>
         </div>
     )
 }

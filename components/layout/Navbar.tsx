@@ -1,5 +1,7 @@
 import Link from "next/link";
 import Button from "../ui/Button";
+import Logo from "../ui/Logo";
+import Menu from '@/components/ui/Menu'
 
 interface MenuItems{
     menu: string;
@@ -18,12 +20,11 @@ const menuItems: MenuItems[] = [
 export default function Navbar () {
     return (
         <section className="bg-primary py-4 text-white">
-            <main className="main">
-            <nav className="flex justify-between items-center">
-                <div>
-                    PayFlow
-                </div>
-                <div className="md:flex hidden gap-5">
+            <main className="main mx-auto">
+            <nav className="flex justify-between items-center w-full mx-auto">
+                <Logo />
+                <Menu/>
+                <div className="lg:flex hidden gap-5 text-sm">
                     {menuItems.map(menu => (
                         <Link
                         key={menu.menu}
@@ -34,7 +35,10 @@ export default function Navbar () {
                     ))}
                 </div>
                 <div>
-                    <Button>Get Started</Button>
+                    <Button
+                    className="px-4 py-2 bg-purple-500 rounded-lg hidden md:flex">
+                        Get Started
+                    </Button>
                 </div>
             </nav>
             </main>
