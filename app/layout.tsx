@@ -1,15 +1,55 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import localFont from 'next/font/local'
 import "./globals.css";
+import AdvertHeader from '../components/layout/AdvertHeader';
+import Navbar from "@/components/layout/Navbar";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
+const poppins = localFont({
+  src: [
+    {
+      path: '../assets/fonts/Poppins-Regular.ttf',
+      weight: '400',
+      style: 'normal',
+    },
+    {
+      path: '../assets/fonts/Poppins-SemiBold.ttf',
+      weight: '600',
+      style: 'normal',
+    },
+    {
+      path: '../assets/fonts/Poppins-Bold.ttf',
+      weight: '700',
+      style: 'normal',
+    },
+    {
+      path: '../assets/fonts/Poppins-ExtraBold.ttf',
+      weight: '800',
+      style: 'normal',
+    },
+  ],
+  variable: '--font-poppins',
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+const inter = localFont({
+  src: [
+    {
+      path: '../assets/fonts/Inter-Variable.ttf',
+      style: 'normal',
+      weight: '500'
+    }
+  ],
+  variable: '--font-inter'
+});
+
+const plusjakarta = localFont({
+  src: [
+    {
+    path: '../assets/fonts/PlusJakartaSans-Variable.ttf',
+    style: 'normal',
+    weight: '400'
+    }
+  ],
+  variable: '--font-jakarta'
 });
 
 export const metadata: Metadata = {
@@ -25,9 +65,15 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${inter.variable} ${plusjakarta.variable} ${poppins.variable} antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="">
+        <header className="sticky top-0 z-20 backdrop-blur-sm">
+          <AdvertHeader/>
+          <Navbar />
+        </header>
+        {children}
+      </body>
     </html>
   );
 }
