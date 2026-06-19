@@ -4,9 +4,9 @@ import Image from "next/image";
 
 export default function Hero (){
     return(
-        <section className="py-16 md:py-18 lg:py-20 bg-primary text-white pb-20">
+        <section className="py-16 md:py-18 lg:py-20 bg-primary text-white">
             <div className="main">
-               <div className="grid grid-cols-1 md:grid-cols-2 gap-20">
+               <div className="grid grid-cols-1 md:grid-cols-2 gap-20 md:pb8 lg:pb-10">
                     <div>
                         <h1 className="text-4xl md:text-5xl lg:text-6xl tracking-normal lg:leading-16 font-bold max-w-2xl">
                             Move Your Money Freely with PayFlow

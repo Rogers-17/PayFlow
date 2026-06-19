@@ -9,7 +9,7 @@ interface MenuItems{
 }
 
 const menuItems: MenuItems[] = [
-    { menu: "Enterprise", href: "/"},
+    { menu: "Enterprise", href: "/enterprise"},
     { menu: "SME", href: "/"},
     { menu: "Personal", href: "/"},
     { menu: "Resources", href: "/"},
@@ -22,7 +22,9 @@ export default function Navbar () {
         <section className="bg-primary py-4 text-white">
             <main className="main mx-auto">
             <nav className="flex justify-between items-center w-full mx-auto">
-                <Logo />
+                <Link href={'/'}>
+                    <Logo />
+                </Link>
                 <Menu/>
                 <div className="lg:flex hidden gap-5 text-sm">
                     {menuItems.map(menu => (
