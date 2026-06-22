@@ -4,7 +4,7 @@ import Button from "../ui/Button";
 import Logo from "../ui/Logo";
 import Menu from '@/components/ui/Menu'
 import * as React from 'react'
-import { ChevronDown, ChevronUp, Download } from 'lucide-react';
+import { ChevronDown, X } from 'lucide-react';
 
 interface MenuItems{
     menu: string;
@@ -19,14 +19,14 @@ interface MenuItems{
 const menuItems: MenuItems[] = [
     { menu: "Product", href: "/enterprise", hasDropdown: true, 
         submenu: [
-            { menu: "Change Money", href: '/'}
+            { menu: "Change Money", href: '/support'}
         ]
     },
     { menu: "Company", href: "/", hasDropdown: true, 
         submenu: [
-        { menu: "Leadership", href: '/'},
-        { menu: "Career", href: '/'},
-        { menu: "Featured", href: '/'},
+        { menu: "Leadership", href: '/blog'},
+        { menu: "Career", href: '/blog'},
+        { menu: "Featured", href: '/support'},
         ]
     },
     { menu: "Blog", href: "/blog", hasDropdown: false,},
@@ -36,16 +36,25 @@ const menuItems: MenuItems[] = [
 export default function Navbar () {
 
     const [activeDropdown, setActiveDropdown] = React.useState<string | null>(null)
+    const [isOpen, setIsOpen] = React.useState<boolean>(false)
 
     return (
-        <section className="bg-primary py-4 text-white">
+        <section className="sticky top-0 z-50 backdrop-blur-md bg-primary py-4 text-white">
             <main className="main">
-            <nav className="flex justify-between items-center">
+            <nav className="flex items-center justify-between">
                 <Link href={'/'}>
                     <Logo />
                 </Link>
-                <Menu/>
-                <div className="lg:flex hidden gap-10 text-sm justify-center items-center">
+                <button
+                    onClick={() => setIsOpen(!isOpen)}
+                    className="lg:hidden" >
+                    {isOpen ? (
+                        <X size={28} />
+                    ) : (
+                        <Menu />
+                    )}
+                </button>
+                <div className="hidden lg:flex items-center gap-8 text-sm">
                     {menuItems.map(menu => (
                         <div
                         key={menu.menu}
@@ -54,15 +63,15 @@ export default function Navbar () {
                         onMouseLeave={() => setActiveDropdown(null)}
                         >
                             <Link
-                            key={menu.menu}
-                            href={menu.href}
-                            className="flex items-center gap-1 hover:text-gray-300"
+                                key={menu.menu}
+                                href={menu.href}
+                                className="flex items-center gap-1 transition-colors duration-200 hover:text-purple-300"
                             >
                                 {menu.menu} {menu.hasDropdown && <ChevronDown />}
                             </Link>
                             
                             {menu.hasDropdown && activeDropdown === menu.menu && (
-                                <div className="absolute top-full left-0 mt-2 w-48 bg-white text-primary shadow-xl rounded-lg p-2 z-50">
+                                <div className="absolute left-0 top-full mt-3 w-56 rounded-xl border border-gray-100 bg-white p-2 text-primary shadow-2xl z-50">
                                     {menu.submenu?.map(submenu => (
                                         <Link 
                                         href={submenu.href}
@@ -77,12 +86,33 @@ export default function Navbar () {
                     ))}
                     <Button
                     className="px-5 py-3 bg-transparent rounded-xl hidden md:flex 
-                    border hover:bg-purple-500 hover:border-none transition-all delay-300 ease-in-out
+                    border hover:bg-purple-500 hover:border-purple-500 transition-all duration-100 ease-in-out
                     overflow-hidden border-white/70">
                         Download App
                     </Button>
                 </div>
             </nav>
+            
+            <div className={`lg:hidden overflow-hidden transition-all duration-300 ease-in-out ${ isOpen ? "max-h-120 opacity-100" : "max-h-0 opacity-0" } `}>
+                <div className="flex flex-col gap-2 py-5">
+                    {menuItems.map(link => (
+                        <Link
+                            key={link.menu}
+                            href={link.href}
+                            onClick={() => setIsOpen(false)}
+                            className="rounded-lg px-4 py-3 transition hover:bg-white/10">
+                            {link.menu}
+                        </Link>
+                    ))}
+                    <Button
+                        className=" mt-3 w-full rounded-xl border  border-white/40 bg-transparent 
+                        py-3 transition duration-300  hover:bg-white  hover:text-primary "
+                    >
+                        Download App
+                    </Button>
+
+                </div>
+            </div>
             </main>
         </section>
     )
