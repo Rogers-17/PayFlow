@@ -1,11 +1,4 @@
-import { 
-  Network, 
-  ShoppingBag, 
-  Music, 
-  Monitor, 
-  Smartphone, 
-  Apple 
-} from 'lucide-react';
+import {  Network,  ShoppingBag,  Music,  Monitor,  Smartphone,  Apple } from 'lucide-react';
 
 const brands = [
   { name: 'Netflix', icon: Network },

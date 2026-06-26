@@ -1,7 +1,7 @@
 import Button from "@/components/ui/Button";
 import GIF from '@/assets/images/Collect-Payments-for-Multiple-Channels-1.1.gif'
 import Image from "next/image";
-import { Download, Smartphone } from "lucide-react";
+import { SiGoogleplay, SiAppstore} from 'react-icons/si'
 
 export default function Hero (){
     return(
@@ -20,11 +20,11 @@ export default function Hero (){
                             <Button
                             className="px-5 py-3 bg-purple-500 rounded-lg
                             flex items-center gap-2 text-lg justify-center"
-                            >App Store <Download /></Button>
+                            >App Store <SiAppstore /></Button>
                             <Button
                             className="px-5 py-3 bg-white text-primary rounded-lg 
                             flex items-center gap-2 text-lg justify-center"
-                            >Play Store <Smartphone /></Button>
+                            >Play Store <SiGoogleplay /></Button>
                         </div>
                     </div>
                     <div>

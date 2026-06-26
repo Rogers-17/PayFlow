@@ -5,38 +5,13 @@ import Logo from "../ui/Logo";
 import Menu from '@/components/ui/Menu'
 import * as React from 'react'
 import { ChevronDown, X } from 'lucide-react';
-
-interface MenuItems{
-    menu: string;
-    href: string;
-    hasDropdown: boolean;
-    submenu?: {
-        menu: string;
-        href: string;
-    }[]
-}
-
-const menuItems: MenuItems[] = [
-    { menu: "Product", href: "/enterprise", hasDropdown: true, 
-        submenu: [
-            { menu: "Change Money", href: '/support'}
-        ]
-    },
-    { menu: "Company", href: "/", hasDropdown: true, 
-        submenu: [
-        { menu: "Leadership", href: '/blog'},
-        { menu: "Career", href: '/blog'},
-        { menu: "Featured", href: '/support'},
-        ]
-    },
-    { menu: "Blog", href: "/blog", hasDropdown: false,},
-    { menu: "Support", href: "/support", hasDropdown: false,}
-]
+import { NavbarMenu } from "@/utils/data";
 
 export default function Navbar () {
 
     const [activeDropdown, setActiveDropdown] = React.useState<string | null>(null)
     const [isOpen, setIsOpen] = React.useState<boolean>(false)
+    const menuItems = NavbarMenu
 
     return (
         <section className="sticky top-0 z-50 backdrop-blur-md bg-primary py-4 text-white">
